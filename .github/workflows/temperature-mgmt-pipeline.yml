@@ -32,26 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
-      - name: Setup JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'corretto'
-
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # TODO remove this step after ci-cd build success
-      - name: List files
-        run: ls -al
-
       - name: Build & Push to DockerHub
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: /docker/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:latest
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:latest
