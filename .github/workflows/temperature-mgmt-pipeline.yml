@@ -9,7 +9,6 @@ on:
       - main
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     name: Build backend
@@ -25,8 +24,8 @@ jobs:
           java-version: '17'
           distribution: 'corretto'
 
-      - name: Compile project
-        run: ./gradlew clean compile
+      - name: Build project
+        run: ./gradlew build -x test
 
   build-image:
     name: Build Docker image
