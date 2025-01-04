@@ -1,0 +1,1 @@
+ALTER TABLE temperature_captor DROP CONSTRAINT fk_temperature_captor_on_sensor;

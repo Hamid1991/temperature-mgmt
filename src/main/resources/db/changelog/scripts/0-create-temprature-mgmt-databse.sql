@@ -1,0 +1,9 @@
+CREATE DATABASE "temperature-mgmt";
+
+CREATE USER temperature
+    WITH ENCRYPTED PASSWORD 'temperature'
+    SUPERUSER
+    CREATEDB
+    CREATEROLE
+    REPLICATION
+    BYPASSRLS;
