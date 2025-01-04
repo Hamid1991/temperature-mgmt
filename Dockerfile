@@ -1,8 +1,8 @@
 FROM gradle:8.5-jdk17-alpine AS build
 WORKDIR /app
 
-COPY ../../build.gradle settings.gradle /app/
-COPY ../../src /app/src
+COPY build.gradle settings.gradle /app/
+COPY src /app/src
 
 RUN gradle build -x test --no-daemon
 
