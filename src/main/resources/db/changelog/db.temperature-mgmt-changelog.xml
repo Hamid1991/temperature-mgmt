@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="hamidkam">
+        <sqlFile path="scripts/1-create-state-limits-table.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="2" author="hamidkam">
+        <sqlFile path="scripts/2-alter-state-limit-table-add-min-limit-condition-and-max-limit-condition-columns.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="3" author="hamidkam">
+        <sqlFile path="scripts/3-alter-state-limit-table-modify-min-and-max-columns-types.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="4" author="hamidkam">
+        <sqlFile path="scripts/4-create-sensor-table.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="5" author="hamidkam">
+        <sqlFile path="scripts/5-create-temperature-captor-table.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="6" author="hamidkam">
+        <sqlFile path="scripts/6-create-temperature-data-table.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="7" author="hamidkam">
+        <sqlFile path="scripts/7-alter-temperature-data-table-modify-timestamp-column.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="8" author="hamidkam">
+        <sqlFile path="scripts/8-alter-temperature-captor-table-drop-sensor-id-unique-condition.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="9" author="hamidkam">
+        <sqlFile path="scripts/9-alter-state-limit-table-drop-min-condition-limit-and-max-condition-limit-columns.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="10" author="hamidkam">
+        <sqlFile path="scripts/10-alter-temperature-captor-table-drop-fk-temperature-captor-on-sensor-constraint.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="11" author="hamidkam">
+        <sqlFile path="scripts/11-alter-temperature-data-table-modify-timestamp-column-type.sql"
+                 relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>

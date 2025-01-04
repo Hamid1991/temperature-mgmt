@@ -1,0 +1,38 @@
+services:
+  temperature-mgmt-db:
+    image: 'postgres:16-alpine'
+    container_name: temperature-mgmt-db
+    hostname: temperature-mgmt-db
+    environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_INITDB_ARGS="--auth-host=scram-sha-256"'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./src/main/resources/db/changelog/scripts/0-create-temprature-mgmt-databse.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend-network
+
+  temperature-mgmt-backend:
+    hostname: temperature-mgmt-backend
+    container_name: temperature-mgmt-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - temperature-mgmt-db
+    networks:
+      - backend-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  backend-network:
+    driver: bridge
