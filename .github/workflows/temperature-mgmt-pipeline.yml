@@ -44,6 +44,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # TODO remove this step after ci-cd build success
+      - name: List files
+        run: ls -al
+
       - name: Build & Push to DockerHub
         uses: docker/build-push-action@v5
         with:
