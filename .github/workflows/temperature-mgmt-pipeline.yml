@@ -47,7 +47,7 @@ jobs:
       - name: Build & Push to DockerHub
         uses: docker/build-push-action@v5
         with:
-          context: book-network
+          context: .
           file: docker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:${{ github.sha }},${{ secrets.DOCKERHUB_USERNAME }}/temperature-mgmt:latest
