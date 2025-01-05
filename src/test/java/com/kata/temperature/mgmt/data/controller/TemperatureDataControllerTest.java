@@ -1,4 +1,4 @@
-package com.kata.temperature.mgmt.sensor.controller;
+package com.kata.temperature.mgmt.data.controller;
 
 import com.kata.temperature.mgmt.captor.entity.TemperatureCaptor;
 import com.kata.temperature.mgmt.captor.repository.TemperatureCaptorRepository;
